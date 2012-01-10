@@ -266,6 +266,7 @@ module TextContent
 
   def self.included(including_class)
     including_class.send(:extend, ClassMethods)
+    super # always make sure to call super in hooks like #included
   end
 end
 ```
@@ -318,6 +319,7 @@ module TextContent
   def self.included(including_class)
     including_class.send(:extend, ClassMethods)
     including_class.send(:has_one, :moderator_approval, {:as => :content})
+    super
   end
 end
 ```
